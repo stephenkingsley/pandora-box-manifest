@@ -1,0 +1,44 @@
+{
+    "name": "pandora-box-manifest",
+    "version": "0.1.0",
+    "description": "Builder component manifests (field descriptors) for the Pandora Box low-code engine's layout components — the extractor-generated SSOT, shipped as data. Pairs with pandora-box-layout (runtime components).",
+    "type": "module",
+    "sideEffects": false,
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./manifest.json": "./dist/manifest.json",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "rm -rf dist && tsc -p tsconfig.json && cp src/manifest.json dist/manifest.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [
+        "pandora-box",
+        "low-code",
+        "manifest",
+        "builder",
+        "field-descriptors"
+    ],
+    "author": "stephenkingsley",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/stephenkingsley/pandora-box-manifest.git"
+    },
+    "devDependencies": {
+        "typescript": "^5.6.3"
+    }
+}
