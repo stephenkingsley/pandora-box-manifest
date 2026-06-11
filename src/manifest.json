@@ -982,6 +982,58 @@
           "required": false
         },
         {
+          "name": "viewAllSize",
+          "label": "View All Size",
+          "description": "\"View all\" link size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "sm",
+                "value": "sm"
+              },
+              {
+                "label": "md",
+                "value": "md"
+              },
+              {
+                "label": "lg",
+                "value": "lg"
+              },
+              {
+                "label": "xl",
+                "value": "xl"
+              }
+            ]
+          },
+          "defaultValue": "sm",
+          "required": false
+        },
+        {
+          "name": "viewAllWeight",
+          "label": "View All Weight",
+          "description": "\"View all\" link weight preset (regular 400 / medium 500 / bold 700).",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "regular",
+                "value": "regular"
+              },
+              {
+                "label": "medium",
+                "value": "medium"
+              },
+              {
+                "label": "bold",
+                "value": "bold"
+              }
+            ]
+          },
+          "defaultValue": "medium",
+          "required": false
+        },
+        {
           "name": "items",
           "label": "Items",
           "description": "The booking cards.",
