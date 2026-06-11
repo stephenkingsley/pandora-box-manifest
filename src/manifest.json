@@ -316,6 +316,229 @@
       ]
     },
     {
+      "name": "Box",
+      "source": "engine",
+      "category": "Layout",
+      "fields": [
+        {
+          "name": "direction",
+          "label": "Direction",
+          "description": "Layout direction (flex main axis).",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "row",
+                "value": "row"
+              },
+              {
+                "label": "column",
+                "value": "column"
+              }
+            ]
+          },
+          "defaultValue": "column",
+          "required": false
+        },
+        {
+          "name": "gap",
+          "label": "Gap",
+          "description": "Gap between children, in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "align",
+          "label": "Align",
+          "description": "Cross-axis alignment of children.",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "start",
+                "value": "start"
+              },
+              {
+                "label": "center",
+                "value": "center"
+              },
+              {
+                "label": "end",
+                "value": "end"
+              },
+              {
+                "label": "stretch",
+                "value": "stretch"
+              }
+            ]
+          },
+          "defaultValue": "stretch",
+          "required": false
+        },
+        {
+          "name": "justify",
+          "label": "Justify",
+          "description": "Main-axis distribution of children.",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "start",
+                "value": "start"
+              },
+              {
+                "label": "center",
+                "value": "center"
+              },
+              {
+                "label": "end",
+                "value": "end"
+              },
+              {
+                "label": "between",
+                "value": "between"
+              },
+              {
+                "label": "around",
+                "value": "around"
+              }
+            ]
+          },
+          "defaultValue": "start",
+          "required": false
+        },
+        {
+          "name": "wrap",
+          "label": "Wrap",
+          "description": "Wrap children onto multiple lines.",
+          "field": {
+            "kind": "radio",
+            "options": [
+              {
+                "label": "True",
+                "value": true
+              },
+              {
+                "label": "False",
+                "value": false
+              }
+            ]
+          },
+          "defaultValue": false,
+          "required": false
+        },
+        {
+          "name": "padding",
+          "label": "Padding",
+          "description": "Inner padding, in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "width",
+          "label": "Width",
+          "description": "Fixed width in px (leave empty for auto).",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "height",
+          "label": "Height",
+          "description": "Fixed height in px (leave empty for auto).",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "grow",
+          "label": "Grow",
+          "description": "Grow to fill the parent's main axis (flex: 1).",
+          "field": {
+            "kind": "radio",
+            "options": [
+              {
+                "label": "True",
+                "value": true
+              },
+              {
+                "label": "False",
+                "value": false
+              }
+            ]
+          },
+          "defaultValue": false,
+          "required": false
+        },
+        {
+          "name": "backgroundColor",
+          "label": "Background Color",
+          "description": "Background colour (hex / rgb).",
+          "field": {
+            "kind": "color"
+          },
+          "required": false
+        },
+        {
+          "name": "borderColor",
+          "label": "Border Color",
+          "description": "Border colour (hex / rgb).",
+          "field": {
+            "kind": "color"
+          },
+          "required": false
+        },
+        {
+          "name": "borderWidth",
+          "label": "Border Width",
+          "description": "Border width in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "radius",
+          "label": "Radius",
+          "description": "Corner radius in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "children",
+          "label": "Children",
+          "description": "Nested content — drop any components in here.",
+          "field": {
+            "kind": "slot"
+          },
+          "required": false
+        },
+        {
+          "name": "action",
+          "label": "On click",
+          "field": {
+            "kind": "action"
+          },
+          "required": false
+        }
+      ],
+      "slotFields": [
+        "children"
+      ]
+    },
+    {
       "name": "Overlay",
       "source": "engine",
       "category": "Layout",
@@ -518,6 +741,69 @@
             ]
           },
           "defaultValue": "body",
+          "required": false
+        },
+        {
+          "name": "size",
+          "label": "Size",
+          "description": "Font-size preset override (xs 12 / sm 14 / md 16 / lg 20 / xl 24) — falls back to the variant.",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "xs",
+                "value": "xs"
+              },
+              {
+                "label": "sm",
+                "value": "sm"
+              },
+              {
+                "label": "md",
+                "value": "md"
+              },
+              {
+                "label": "lg",
+                "value": "lg"
+              },
+              {
+                "label": "xl",
+                "value": "xl"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "weight",
+          "label": "Weight",
+          "description": "Font-weight preset override (regular 400 / medium 500 / bold 700) — falls back to the variant.",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "regular",
+                "value": "regular"
+              },
+              {
+                "label": "medium",
+                "value": "medium"
+              },
+              {
+                "label": "bold",
+                "value": "bold"
+              }
+            ]
+          },
+          "required": false
+        },
+        {
+          "name": "color",
+          "label": "Color",
+          "description": "Text colour override (hex / rgb) — falls back to the variant.",
+          "field": {
+            "kind": "color"
+          },
           "required": false
         },
         {
