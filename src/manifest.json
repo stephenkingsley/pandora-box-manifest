@@ -760,6 +760,58 @@
           "required": false
         },
         {
+          "name": "headingSize",
+          "label": "Heading Size",
+          "description": "Heading size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "sm",
+                "value": "sm"
+              },
+              {
+                "label": "md",
+                "value": "md"
+              },
+              {
+                "label": "lg",
+                "value": "lg"
+              },
+              {
+                "label": "xl",
+                "value": "xl"
+              }
+            ]
+          },
+          "defaultValue": "lg",
+          "required": false
+        },
+        {
+          "name": "headingWeight",
+          "label": "Heading Weight",
+          "description": "Heading weight preset (regular 400 / medium 500 / bold 700).",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "regular",
+                "value": "regular"
+              },
+              {
+                "label": "medium",
+                "value": "medium"
+              },
+              {
+                "label": "bold",
+                "value": "bold"
+              }
+            ]
+          },
+          "defaultValue": "bold",
+          "required": false
+        },
+        {
           "name": "items",
           "label": "Items",
           "description": "The cards in the carousel (image + badge + title + description each).",
