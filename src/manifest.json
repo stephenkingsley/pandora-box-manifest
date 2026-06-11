@@ -974,6 +974,83 @@
       "slotFields": []
     },
     {
+      "name": "Carousel",
+      "source": "engine",
+      "category": "Media",
+      "fields": [
+        {
+          "name": "height",
+          "label": "Height",
+          "description": "Slide height in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 180,
+          "required": false
+        },
+        {
+          "name": "radius",
+          "label": "Radius",
+          "description": "Corner radius in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "dots",
+          "label": "Dots",
+          "description": "Show pagination dots.",
+          "field": {
+            "kind": "radio",
+            "options": [
+              {
+                "label": "True",
+                "value": true
+              },
+              {
+                "label": "False",
+                "value": false
+              }
+            ]
+          },
+          "defaultValue": true,
+          "required": false
+        },
+        {
+          "name": "slides",
+          "label": "Slides",
+          "description": "The slides — each one an image with optional overlay content.",
+          "field": {
+            "kind": "array",
+            "itemFields": [
+              {
+                "name": "image",
+                "label": "Image",
+                "description": "Full-bleed slide image.",
+                "field": {
+                  "kind": "image"
+                },
+                "required": false
+              },
+              {
+                "name": "content",
+                "label": "Content",
+                "description": "Overlay content — dropped ON TOP of the image. Put an `Overlay` (placement / scrim) with a\n`Typography` caption here for the «custom content» label, or any components you like.",
+                "field": {
+                  "kind": "slot"
+                },
+                "required": false
+              }
+            ]
+          },
+          "required": false
+        }
+      ],
+      "slotFields": []
+    },
+    {
       "name": "HeroOverview",
       "source": "engine",
       "category": "Templates",
