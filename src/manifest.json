@@ -316,34 +316,14 @@
       ]
     },
     {
-      "name": "Box",
+      "name": "Overlay",
       "source": "engine",
       "category": "Layout",
       "fields": [
         {
-          "name": "direction",
-          "label": "Direction",
-          "description": "Layout direction (flex main axis).",
-          "field": {
-            "kind": "select",
-            "options": [
-              {
-                "label": "row",
-                "value": "row"
-              },
-              {
-                "label": "column",
-                "value": "column"
-              }
-            ]
-          },
-          "defaultValue": "column",
-          "required": false
-        },
-        {
-          "name": "gap",
-          "label": "Gap",
-          "description": "Gap between children, in px.",
+          "name": "x",
+          "label": "X",
+          "description": "Panel offset from the slide's left edge, px.",
           "field": {
             "kind": "number"
           },
@@ -351,89 +331,9 @@
           "required": false
         },
         {
-          "name": "align",
-          "label": "Align",
-          "description": "Cross-axis alignment of children.",
-          "field": {
-            "kind": "select",
-            "options": [
-              {
-                "label": "start",
-                "value": "start"
-              },
-              {
-                "label": "center",
-                "value": "center"
-              },
-              {
-                "label": "end",
-                "value": "end"
-              },
-              {
-                "label": "stretch",
-                "value": "stretch"
-              }
-            ]
-          },
-          "defaultValue": "stretch",
-          "required": false
-        },
-        {
-          "name": "justify",
-          "label": "Justify",
-          "description": "Main-axis distribution of children.",
-          "field": {
-            "kind": "select",
-            "options": [
-              {
-                "label": "start",
-                "value": "start"
-              },
-              {
-                "label": "center",
-                "value": "center"
-              },
-              {
-                "label": "end",
-                "value": "end"
-              },
-              {
-                "label": "between",
-                "value": "between"
-              },
-              {
-                "label": "around",
-                "value": "around"
-              }
-            ]
-          },
-          "defaultValue": "start",
-          "required": false
-        },
-        {
-          "name": "wrap",
-          "label": "Wrap",
-          "description": "Wrap children onto multiple lines.",
-          "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
-          },
-          "defaultValue": false,
-          "required": false
-        },
-        {
-          "name": "padding",
-          "label": "Padding",
-          "description": "Inner padding, in px.",
+          "name": "y",
+          "label": "Y",
+          "description": "Panel offset from the slide's top edge, px.",
           "field": {
             "kind": "number"
           },
@@ -443,7 +343,7 @@
         {
           "name": "width",
           "label": "Width",
-          "description": "Fixed width in px (leave empty for auto).",
+          "description": "Overlay panel width in px. Unset → the overlay fills the slide width.",
           "field": {
             "kind": "number"
           },
@@ -452,64 +352,25 @@
         {
           "name": "height",
           "label": "Height",
-          "description": "Fixed height in px (leave empty for auto).",
+          "description": "Overlay panel height in px. Unset → the overlay fills the slide height.",
           "field": {
             "kind": "number"
           },
           "required": false
         },
         {
-          "name": "grow",
-          "label": "Grow",
-          "description": "Grow to fill the parent's main axis (flex: 1).",
+          "name": "background",
+          "label": "Background",
+          "description": "Panel background — any CSS background value: a colour incl. `rgba(...)` for\ntranslucency, OR a gradient `linear-gradient(...)`. Overrides `scrim`. The editor\nexposes this as a background picker (solid + alpha, or gradient).",
           "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
+            "kind": "background"
           },
-          "defaultValue": false,
-          "required": false
-        },
-        {
-          "name": "backgroundColor",
-          "label": "Background Color",
-          "description": "Background colour (hex / rgb).",
-          "field": {
-            "kind": "color"
-          },
-          "required": false
-        },
-        {
-          "name": "borderColor",
-          "label": "Border Color",
-          "description": "Border colour (hex / rgb).",
-          "field": {
-            "kind": "color"
-          },
-          "required": false
-        },
-        {
-          "name": "borderWidth",
-          "label": "Border Width",
-          "description": "Border width in px.",
-          "field": {
-            "kind": "number"
-          },
-          "defaultValue": 0,
           "required": false
         },
         {
           "name": "radius",
           "label": "Radius",
-          "description": "Corner radius in px.",
+          "description": "Corner radius of the panel, px.",
           "field": {
             "kind": "number"
           },
@@ -517,36 +378,9 @@
           "required": false
         },
         {
-          "name": "children",
-          "label": "Children",
-          "description": "Nested content — drop any components in here.",
-          "field": {
-            "kind": "slot"
-          },
-          "required": false
-        },
-        {
-          "name": "action",
-          "label": "On click",
-          "field": {
-            "kind": "action"
-          },
-          "required": false
-        }
-      ],
-      "slotFields": [
-        "children"
-      ]
-    },
-    {
-      "name": "Overlay",
-      "source": "engine",
-      "category": "Layout",
-      "fields": [
-        {
           "name": "placement",
           "label": "Placement",
-          "description": "Vertical placement of the content over the media.",
+          "description": "Vertical placement of the content over the media (anchored mode — ignored\nonce children are absolutely placed via `Positioned`).",
           "field": {
             "kind": "select",
             "options": [
@@ -570,7 +404,7 @@
         {
           "name": "align",
           "label": "Align",
-          "description": "Horizontal alignment of the content.",
+          "description": "Horizontal alignment of the content (anchored mode).",
           "field": {
             "kind": "select",
             "options": [
@@ -598,7 +432,7 @@
         {
           "name": "scrim",
           "label": "Scrim",
-          "description": "Dark gradient scrim so overlaid text stays legible on photos (and makes\ndescendant text white).",
+          "description": "Dark gradient scrim so overlaid text stays legible on photos (and makes\ndescendant text white). Ignored when `background` is set.",
           "field": {
             "kind": "radio",
             "options": [
@@ -618,7 +452,7 @@
         {
           "name": "padding",
           "label": "Padding",
-          "description": "Inner padding (spacing token).",
+          "description": "Inner padding (spacing token). Defaults to `none` so free-placed `Positioned`\nblocks measure from the panel's own edge.",
           "field": {
             "kind": "select",
             "options": [
@@ -648,7 +482,7 @@
               }
             ]
           },
-          "defaultValue": "md",
+          "defaultValue": "none",
           "required": false
         },
         {
@@ -690,7 +524,64 @@
         {
           "name": "children",
           "label": "Children",
-          "description": "Content placed over the media (e.g. a Tag, a DataRow).",
+          "description": "Content placed over the media — typically `Positioned` blocks for free x/y layout.",
+          "field": {
+            "kind": "slot"
+          },
+          "required": false
+        }
+      ],
+      "slotFields": [
+        "children"
+      ]
+    },
+    {
+      "name": "Positioned",
+      "source": "engine",
+      "category": "Layout",
+      "fields": [
+        {
+          "name": "x",
+          "label": "X",
+          "description": "Distance from the overlay's left edge, px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "y",
+          "label": "Y",
+          "description": "Distance from the overlay's top edge, px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "width",
+          "label": "Width",
+          "description": "Width in px. Unset → sizes to its content.",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "height",
+          "label": "Height",
+          "description": "Height in px. Unset → sizes to its content.",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "children",
+          "label": "Children",
+          "description": "A single element to place (e.g. a Typography, an Image, a Tag).",
           "field": {
             "kind": "slot"
           },
@@ -718,7 +609,7 @@
         {
           "name": "variant",
           "label": "Variant",
-          "description": "Typographic role — maps to dp-design's seed tokens (size / line-height /\nweight / colour), so text matches the design system without ad-hoc styles.",
+          "description": "Typographic role — maps to dp-design's seed tokens (size / line-height / weight / colour),\nread LIVE so it always matches the active dp theme.",
           "field": {
             "kind": "select",
             "options": [
@@ -746,7 +637,7 @@
         {
           "name": "size",
           "label": "Size",
-          "description": "Font-size preset override (xs 12 / sm 14 / md 16 / lg 20 / xl 24) — falls back to the variant.",
+          "description": "Font-size override mapped to dp's text scale (xs→Xsm · sm→Sm · md→Default · lg→Lg · xl→Xlg) —\nfalls back to the variant.",
           "field": {
             "kind": "select",
             "options": [
@@ -800,7 +691,7 @@
         {
           "name": "color",
           "label": "Color",
-          "description": "Text colour override (hex / rgb) — falls back to the variant.",
+          "description": "Text colour override — a dp colour TOKEN NAME (e.g. \"linkColor\", resolved live against the\ntheme) or a raw CSS colour; falls back to the variant's dp foreground token.",
           "field": {
             "kind": "color"
           },
@@ -974,14 +865,43 @@
       "slotFields": []
     },
     {
-      "name": "Carousel",
+      "name": "Swiper",
       "source": "engine",
       "category": "Media",
       "fields": [
         {
+          "name": "imagesList",
+          "label": "Images List",
+          "description": "The slides — each a full-bleed image with an optional overlay.",
+          "field": {
+            "kind": "array",
+            "itemFields": [
+              {
+                "name": "src",
+                "label": "Src",
+                "description": "Slide background image URL.",
+                "field": {
+                  "kind": "image"
+                },
+                "required": false
+              },
+              {
+                "name": "content",
+                "label": "Content",
+                "description": "Overlay content placed over the image — drop an `Overlay` here for free x/y layout.",
+                "field": {
+                  "kind": "slot"
+                },
+                "required": false
+              }
+            ]
+          },
+          "required": false
+        },
+        {
           "name": "height",
           "label": "Height",
-          "description": "Slide height in px.",
+          "description": "Slide height in px (the image fills the width).",
           "field": {
             "kind": "number"
           },
@@ -989,19 +909,33 @@
           "required": false
         },
         {
-          "name": "radius",
-          "label": "Radius",
-          "description": "Corner radius in px.",
+          "name": "imageFit",
+          "label": "Image Fit",
+          "description": "How each image fills its slide.",
           "field": {
-            "kind": "number"
+            "kind": "select",
+            "options": [
+              {
+                "label": "cover",
+                "value": "cover"
+              },
+              {
+                "label": "contain",
+                "value": "contain"
+              },
+              {
+                "label": "fill",
+                "value": "fill"
+              }
+            ]
           },
-          "defaultValue": 0,
+          "defaultValue": "cover",
           "required": false
         },
         {
           "name": "dots",
           "label": "Dots",
-          "description": "Show pagination dots.",
+          "description": "Show the pagination dots under the carousel.",
           "field": {
             "kind": "radio",
             "options": [
@@ -1019,32 +953,33 @@
           "required": false
         },
         {
-          "name": "slides",
-          "label": "Slides",
-          "description": "The slides — each one an image with optional overlay content.",
+          "name": "loop",
+          "label": "Loop",
+          "description": "Loop back to the first slide after the last.",
           "field": {
-            "kind": "array",
-            "itemFields": [
+            "kind": "radio",
+            "options": [
               {
-                "name": "image",
-                "label": "Image",
-                "description": "Full-bleed slide image.",
-                "field": {
-                  "kind": "image"
-                },
-                "required": false
+                "label": "True",
+                "value": true
               },
               {
-                "name": "content",
-                "label": "Content",
-                "description": "Overlay content — dropped ON TOP of the image. Put an `Overlay` (placement / scrim) with a\n`Typography` caption here for the «custom content» label, or any components you like.",
-                "field": {
-                  "kind": "slot"
-                },
-                "required": false
+                "label": "False",
+                "value": false
               }
             ]
           },
+          "defaultValue": false,
+          "required": false
+        },
+        {
+          "name": "autoplayInterval",
+          "label": "Autoplay Interval",
+          "description": "Auto-advance interval in ms (0 = no autoplay).",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 0,
           "required": false
         }
       ],
@@ -1125,7 +1060,7 @@
         {
           "name": "headingSize",
           "label": "Heading Size",
-          "description": "Heading size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "description": "Heading size preset (sm / md / lg / xl), mapped to dp's text scale.",
           "field": {
             "kind": "select",
             "options": [
@@ -1252,7 +1187,7 @@
         {
           "name": "headingSize",
           "label": "Heading Size",
-          "description": "Heading size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "description": "Heading size preset (sm / md / lg / xl), mapped to dp's text scale.",
           "field": {
             "kind": "select",
             "options": [
@@ -1347,7 +1282,7 @@
         {
           "name": "viewAllSize",
           "label": "View All Size",
-          "description": "\"View all\" link size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "description": "\"View all\" link size preset (sm / md / lg / xl).",
           "field": {
             "kind": "select",
             "options": [
@@ -1446,7 +1381,7 @@
               {
                 "name": "statusTone",
                 "label": "Status Tone",
-                "description": "Status colour tone.",
+                "description": "Status colour tone → dp `Tag` theme.",
                 "field": {
                   "kind": "select",
                   "options": [
@@ -1539,7 +1474,7 @@
               {
                 "name": "statusTone",
                 "label": "Status Tone",
-                "description": "Status colour tone.",
+                "description": "Status colour tone → dp `Tag` theme.",
                 "field": {
                   "kind": "select",
                   "options": [
@@ -1603,7 +1538,7 @@
         {
           "name": "headingSize",
           "label": "Heading Size",
-          "description": "Heading size preset (sm 14 / md 16 / lg 18 / xl 22).",
+          "description": "Heading size preset (sm / md / lg / xl), mapped to dp's text scale.",
           "field": {
             "kind": "select",
             "options": [
@@ -4165,229 +4100,6 @@
                 "value": false
               }
             ]
-          },
-          "required": false
-        }
-      ],
-      "slotFields": []
-    },
-    {
-      "name": "Swiper",
-      "source": "dp-design",
-      "category": "dp-design",
-      "fields": [
-        {
-          "name": "width",
-          "label": "Width",
-          "description": "width of swiper item",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "height",
-          "label": "Height",
-          "description": "height of swiper item",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "imagesList",
-          "label": "Images List",
-          "description": "images list",
-          "field": {
-            "kind": "array",
-            "itemFields": [
-              {
-                "name": "src",
-                "label": "Src",
-                "field": {
-                  "kind": "image"
-                },
-                "required": true
-              },
-              {
-                "name": "content",
-                "label": "Content",
-                "field": {
-                  "kind": "slot"
-                },
-                "required": false
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "fallbackImage",
-          "label": "Fallback Image",
-          "description": "default image to show when image loading failed",
-          "field": {
-            "kind": "text"
-          },
-          "required": false
-        },
-        {
-          "name": "imageFit",
-          "label": "Image Fit",
-          "description": "image fit mode, passed to Image component as fit prop",
-          "field": {
-            "kind": "select",
-            "options": [
-              {
-                "label": "fill",
-                "value": "fill"
-              },
-              {
-                "label": "contain",
-                "value": "contain"
-              },
-              {
-                "label": "cover",
-                "value": "cover"
-              },
-              {
-                "label": "none",
-                "value": "none"
-              },
-              {
-                "label": "scale-down",
-                "value": "scale-down"
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "defaultIndex",
-          "label": "Default Index",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "allowTouchMove",
-          "label": "Allow Touch Move",
-          "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "autoplayInterval",
-          "label": "Autoplay Interval",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "loop",
-          "label": "Loop",
-          "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "direction",
-          "label": "Direction",
-          "field": {
-            "kind": "select",
-            "options": [
-              {
-                "label": "vertical",
-                "value": "vertical"
-              },
-              {
-                "label": "horizontal",
-                "value": "horizontal"
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "slideSize",
-          "label": "Slide Size",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "trackOffset",
-          "label": "Track Offset",
-          "field": {
-            "kind": "number"
-          },
-          "required": false
-        },
-        {
-          "name": "stuckAtBoundary",
-          "label": "Stuck At Boundary",
-          "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "rubberband",
-          "label": "Rubberband",
-          "field": {
-            "kind": "radio",
-            "options": [
-              {
-                "label": "True",
-                "value": true
-              },
-              {
-                "label": "False",
-                "value": false
-              }
-            ]
-          },
-          "required": false
-        },
-        {
-          "name": "total",
-          "label": "Total",
-          "field": {
-            "kind": "number"
           },
           "required": false
         }

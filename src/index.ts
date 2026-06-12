@@ -23,6 +23,7 @@ export type FieldDescriptor =
     | { kind: 'radio'; options: FieldOption[] }
     | { kind: 'slot' }
     | { kind: 'color' }
+    | { kind: 'background' }
     | { kind: 'image' }
     | { kind: 'url' }
     | { kind: 'action' }
