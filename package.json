@@ -1,6 +1,6 @@
 {
     "name": "pandora-box-manifest",
-    "version": "0.2.8",
+    "version": "0.2.9",
     "description": "Builder component manifests (field descriptors) for the Pandora Box low-code engine's layout components — the extractor-generated SSOT, shipped as data. Pairs with pandora-box-layout (runtime components).",
     "type": "module",
     "sideEffects": false,

@@ -183,6 +183,51 @@
           "required": false
         },
         {
+          "name": "width",
+          "label": "Width",
+          "description": "Fixed width in px. Unset → the box sizes to its container/content. Set it to hold a\ncolumn at a constant width — e.g. the text column of a card whose right side is taken\nby a decoration, so the copy reserves the left space and never runs under it.",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "marginTop",
+          "label": "Margin Top",
+          "description": "Outer margin — top, px. Space ABOVE the box (separates list items / sections).",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "marginRight",
+          "label": "Margin Right",
+          "description": "Outer margin — right, px.",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "marginBottom",
+          "label": "Margin Bottom",
+          "description": "Outer margin — bottom, px. Space BELOW the box (the usual list-item gap).",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "marginLeft",
+          "label": "Margin Left",
+          "description": "Outer margin — left, px.",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
           "name": "children",
           "label": "Children",
           "description": "Nested content.",
@@ -291,6 +336,26 @@
             ]
           },
           "defaultValue": true,
+          "required": false
+        },
+        {
+          "name": "clipContent",
+          "label": "Clip Content",
+          "description": "Clip overflowing children to the card's rounded corners (`overflow: hidden`). Turn ON for a\nfull-bleed image that should round with the card, or a decoration that bleeds off an edge and\nshould be cut by the card. Leave OFF (default) so a legitimately-overflowing child (e.g. a\nbadge poking outside) isn't cut.",
+          "field": {
+            "kind": "radio",
+            "options": [
+              {
+                "label": "True",
+                "value": true
+              },
+              {
+                "label": "False",
+                "value": false
+              }
+            ]
+          },
+          "defaultValue": false,
           "required": false
         },
         {
@@ -543,7 +608,7 @@
         {
           "name": "x",
           "label": "X",
-          "description": "Distance from the overlay's left edge, px.",
+          "description": "Distance from the left edge, px. Ignored when `right` is set.",
           "field": {
             "kind": "number"
           },
@@ -553,11 +618,29 @@
         {
           "name": "y",
           "label": "Y",
-          "description": "Distance from the overlay's top edge, px.",
+          "description": "Distance from the top edge, px. Ignored when `bottom` is set.",
           "field": {
             "kind": "number"
           },
           "defaultValue": 0,
+          "required": false
+        },
+        {
+          "name": "right",
+          "label": "Right",
+          "description": "Distance from the RIGHT edge, px. Set this (instead of `x`) to anchor to the right —\nuse a NEGATIVE value to bleed the block off the edge (clipped by a `Card[clipContent]`).",
+          "field": {
+            "kind": "number"
+          },
+          "required": false
+        },
+        {
+          "name": "bottom",
+          "label": "Bottom",
+          "description": "Distance from the BOTTOM edge, px. Set this (instead of `y`) to anchor to the bottom —\nuse a NEGATIVE value to bleed the block off the edge. Pair with `right` to tuck a\ndecoration into the bottom-right corner regardless of the card's height.",
+          "field": {
+            "kind": "number"
+          },
           "required": false
         },
         {
@@ -1814,6 +1897,182 @@
                 "required": false
               }
             ]
+          },
+          "required": false
+        }
+      ],
+      "slotFields": []
+    },
+    {
+      "name": "FeatureCard",
+      "source": "engine",
+      "category": "Templates",
+      "fields": [
+        {
+          "name": "image",
+          "label": "Image",
+          "description": "Hero image (fills the card top edge-to-edge, clipped to the rounded corners).",
+          "field": {
+            "kind": "image"
+          },
+          "required": false
+        },
+        {
+          "name": "badge",
+          "label": "Badge",
+          "description": "Badge text overlaid on the image (top-left). Leave empty to hide it.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Popular",
+          "required": false
+        },
+        {
+          "name": "badgeTone",
+          "label": "Badge Tone",
+          "description": "Badge colour tone → dp `Tag` theme.",
+          "field": {
+            "kind": "select",
+            "options": [
+              {
+                "label": "success",
+                "value": "success"
+              },
+              {
+                "label": "warning",
+                "value": "warning"
+              },
+              {
+                "label": "primary",
+                "value": "primary"
+              },
+              {
+                "label": "muted",
+                "value": "muted"
+              },
+              {
+                "label": "danger",
+                "value": "danger"
+              },
+              {
+                "label": "info",
+                "value": "info"
+              }
+            ]
+          },
+          "defaultValue": "primary",
+          "required": false
+        },
+        {
+          "name": "title",
+          "label": "Title",
+          "description": "Card title.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Travel connected from the moment you arrive",
+          "required": false
+        },
+        {
+          "name": "description",
+          "label": "Description",
+          "description": "Supporting description.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Skip roaming fees and enjoy reliable data throughout your trip",
+          "required": false
+        },
+        {
+          "name": "linkText",
+          "label": "Link Text",
+          "description": "Call-to-action link text (the blue link). Leave empty to hide it.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Get an eSIM",
+          "required": false
+        },
+        {
+          "name": "height",
+          "label": "Height",
+          "description": "Hero image height in px.",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 180,
+          "required": false
+        },
+        {
+          "name": "action",
+          "label": "On click",
+          "field": {
+            "kind": "action"
+          },
+          "required": false
+        }
+      ],
+      "slotFields": []
+    },
+    {
+      "name": "ActionCard",
+      "source": "engine",
+      "category": "Templates",
+      "fields": [
+        {
+          "name": "title",
+          "label": "Title",
+          "description": "Card title.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "A faster way through the airport",
+          "required": false
+        },
+        {
+          "name": "description",
+          "label": "Description",
+          "description": "Supporting description.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Skip the queues through security and immigration",
+          "required": false
+        },
+        {
+          "name": "linkText",
+          "label": "Link Text",
+          "description": "Call-to-action link text (the blue link). Leave empty to hide it.",
+          "field": {
+            "kind": "text"
+          },
+          "defaultValue": "Book Fast Track",
+          "required": false
+        },
+        {
+          "name": "decoration",
+          "label": "Decoration",
+          "description": "Decoration image on the right — bleeds off the card edge and is clipped to the rounded corner.",
+          "field": {
+            "kind": "image"
+          },
+          "required": false
+        },
+        {
+          "name": "decorationWidth",
+          "label": "Decoration Width",
+          "description": "Decoration width in px (how much of the right side it occupies).",
+          "field": {
+            "kind": "number"
+          },
+          "defaultValue": 112,
+          "required": false
+        },
+        {
+          "name": "action",
+          "label": "On click",
+          "field": {
+            "kind": "action"
           },
           "required": false
         }
