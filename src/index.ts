@@ -30,13 +30,34 @@ export type FieldDescriptor =
     | { kind: 'dataMap'; itemFields?: ManifestField[] }
     | { kind: 'array'; itemFields: ManifestField[]; itemLabel?: string };
 
+/**
+ * Who a prop is tuned by, which decides the panel tier it appears in.
+ *
+ * Presentation only: a `design` field is still a normal prop, still stored, still rendered —
+ * it is merely not offered as a control to ops.
+ */
+export type FieldAudience = 'ops' | 'design';
+
 export interface ManifestField {
     name: string;
     label: string;
+    /** Engineer-facing JSDoc body extracted from the prop type. */
     description?: string;
     field: FieldDescriptor;
     defaultValue?: unknown;
     required: boolean;
+    /**
+     * Overrides the editor's default tier for this prop. Unset means the editor derives it from
+     * `field.kind`, so nothing needs per-field authoring to get a sane tier.
+     */
+    audience?: FieldAudience;
+    /** Ops-facing help, in plain language. Distinct from {@link ManifestField.description}. */
+    help?: string;
+    /**
+     * Ops-facing answer labels for a `select`/`radio`, as `value → label`. Keys are the option
+     * value stringified. The VALUE is never changed — only the gloss around it.
+     */
+    answers?: Record<string, string>;
 }
 
 export type ComponentSource = 'engine' | 'dp-design';
